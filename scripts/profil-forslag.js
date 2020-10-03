@@ -1,10 +1,11 @@
 var showProfileButton = document.getElementById("show-profile-btn");
 var profilOutput = document.getElementById("profil-div");
-var ageCheck = 25; // Because assignment
+var ageCheck = 25; // Because assignment. Ideally this value would be possible to change with a form of input
 var profilesToPrint = [];
 
 
 showProfileButton.addEventListener("click", function() {
+    // usage: showProfile(array, age, gender)
     showProfile(
         profiles, 
         parseInt(document.getElementById("age-input").value), 
@@ -13,16 +14,21 @@ showProfileButton.addEventListener("click", function() {
 });
 
 function showProfile(profiles, age, gender) {
+    // empty output and array so you can just change filter and click button again without refresh
     profilOutput.innerHTML = "";
     profilesToPrint = [];
     profiles.forEach(p => {
-        if ((age >= ageCheck && p.age < ageCheck) || (age <= ageCheck && p.age > ageCheck) || gender != p.gender) {
-            console.log("Skipping " + p.name + " " + p.surname);
-            return;
-        } else {
-            profilesToPrint.unshift(p);
-        }
+        // !check inputs vs ages/genders of profiles & ageCheck to find profiles to add to new array. else console log which profile is skipped
+        !((age >= ageCheck && p.age < ageCheck) || (age <= ageCheck && p.age > ageCheck) || gender != p.gender) ? profilesToPrint.unshift(p) : console.log("Skipping " + p.name + " " + p.surname);
     });
+
+    // if no matches for some reason
+    if (profilesToPrint.length === 0) {
+        profilOutput.innerHTML = "No profiles to show";
+        return;
+    }
+    
+    // Rng to decide which profile to print out
     var rng = Math.floor(Math.random() * profilesToPrint.length);
     profilOutput.innerHTML = `
     <div>
@@ -94,4 +100,18 @@ function getPrintOutput(name, surname, age, gender, picture) {
 }
 
 But this goes over the needed functionality...so lets simplify
+*/
+
+/* rev 2.5
+
+    profiles.forEach(p => {
+        // check inputs vs ages/genders of profiles & ageCheck to find profiles to NOT show. else put the profile into a new array
+        if ((age >= ageCheck && p.age < ageCheck) || (age <= ageCheck && p.age > ageCheck) || gender != p.gender) {
+            console.log("Skipping " + p.name + " " + p.surname);
+            return;
+        } else {
+            profilesToPrint.unshift(p);
+        }
+    });
+
 */
