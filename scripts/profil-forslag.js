@@ -30,7 +30,7 @@ function showProfile(profiles, age, gender) {
         Alder: ${profilesToPrint[rng].age} år<br/>
         Kjønn: ${profilesToPrint[rng].gender}<br/>
         <img src="images/${profilesToPrint[rng].picture}">
-    </div><br/><br/>`
+    </div>`
 }
 
 
