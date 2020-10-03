@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Et forslag</title>
+</head>
+<body>
+
+	<div>
+		
+		<header>
+			<h1>FindYourLove</h1>
+		</header>
+		
+		<nav>
+			<ul>
+				<li><a href="alle-profiler.html">Alle profiler</a></li>
+				<li><a href="profil-forslag.html">Dagens profil</a></li>
+			</ul>
+		</nav>
+		
+		<main>
+		
+			<section>
+				<label>Tast inn ønsket alder</label>
+				<input type="number" id="age-input" ><br>
+				<label>Mann eller kvinne?</label>
+				<input type="text" id="gender-input">
+				<input type="button" value="Vis forslag" id="show-profile-btn">
+			</section>
+			
+			<section>
+				<br/><br/><br/>
+				<div id="profil-div"></div>
+			</section>
+			
+		</main>
+		
+	</div>
+
+	<script src="scripts/datasets.js"></script>
+	<script src="scripts/profil-forslag.js"></script>
+
+
+</body>
+</html>
