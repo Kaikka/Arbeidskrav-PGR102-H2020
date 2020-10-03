@@ -1,6 +1,9 @@
 var showProfileButton = document.getElementById("show-profile-btn");
 var profilOutput = document.getElementById("profil-div");
 var ageCheck = 25; // Because assignment
+var allowMultipleSuggestions = false;
+var profilesToPrint = [];
+
 
 showProfileButton.addEventListener("click", function() {
     showProfile(
@@ -11,11 +14,13 @@ showProfileButton.addEventListener("click", function() {
 });
 
 function showProfile(profiles, age, gender) {
+    profilOutput.innerHTML = "";
+    profilesToPrint = [];
     profiles.forEach(p => {
         if ((age >= ageCheck && p.age < ageCheck) || (age <= ageCheck && p.age > ageCheck) || gender != p.gender) {
             console.log("Skipping " + p.name + " " + p.surname);
             return;
-        } else {
+        } else if (allowMultipleSuggestions) {
             console.log("Priting " + p.name);
             profilOutput.innerHTML += `
             <div>
@@ -24,8 +29,20 @@ function showProfile(profiles, age, gender) {
                 Kjønn: ${p.gender}<br/>
                 <img src="images/${p.picture}">
             </div><br/><br/>`
+        } else if (!allowMultipleSuggestions) {
+            profilesToPrint.unshift(p);
         }
     });
+    if (!allowMultipleSuggestions) {
+        var rng = Math.floor(Math.random() * profilesToPrint.length);
+        profilOutput.innerHTML = `
+        <div>
+            Navn: ${profilesToPrint[rng].name} ${profilesToPrint[rng].surname}<br/>
+            Alder: ${profilesToPrint[rng].age} år<br/>
+            Kjønn: ${profilesToPrint[rng].gender}<br/>
+            <img src="images/${profilesToPrint[rng].picture}">
+        </div><br/><br/>`
+    }
 }
 
 // function showProfile(profiles, age, gender) {
