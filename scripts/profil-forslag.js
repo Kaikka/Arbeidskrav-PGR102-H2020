@@ -18,8 +18,10 @@ function showProfile(profiles, age, gender) {
     profilOutput.innerHTML = "";
     profilesToPrint = [];
     profiles.forEach(p => {
-        // !check inputs vs ages/genders of profiles & ageCheck to find profiles to add to new array. else console log which profile is skipped
-        !((age >= ageCheck && p.age < ageCheck) || (age <= ageCheck && p.age > ageCheck) || gender != p.gender) ? profilesToPrint.unshift(p) : console.log("Skipping " + p.name + " " + p.surname);
+        // !check inputs vs ages/genders of profiles & ageCheck to find profiles to add to new array
+        if (!((age >= ageCheck && p.age < ageCheck) || (age <= ageCheck && p.age > ageCheck) || gender != p.gender)) {
+            profilesToPrint.unshift(p);
+        }
     });
 
     // if no matches for some reason
@@ -112,6 +114,15 @@ But this goes over the needed functionality...so lets simplify
         } else {
             profilesToPrint.unshift(p);
         }
+    });
+
+*/
+
+/* rev 2.5.5
+
+    profiles.forEach(p => {
+        // !check inputs vs ages/genders of profiles & ageCheck to find profiles to add to new array. else console log which profile is skipped
+        !((age >= ageCheck && p.age < ageCheck) || (age <= ageCheck && p.age > ageCheck) || gender != p.gender) ? profilesToPrint.unshift(p) : console.log("Skipping " + p.name + " " + p.surname);
     });
 
 */
