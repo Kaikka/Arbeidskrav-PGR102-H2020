@@ -43,6 +43,8 @@ function showProfile(profiles, age, gender) {
 
 
 
+// Anything below this is ideas that was scrapped/changed, but left commented out to show my ideas along the way
+
 /* rev 1
 function showProfile(profiles, age, gender) {
     // arr.slice(0) to iterate over a cloned arr of profiles to avoid errors
