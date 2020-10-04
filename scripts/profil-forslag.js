@@ -17,6 +17,7 @@ function showProfile(profiles, age, gender) {
     // empty output and array so you can just change filter and click button again without refresh
     profilOutput.innerHTML = "";
     profilesToPrint = [];
+
     profiles.forEach(p => {
         // !check inputs vs ages/genders of profiles & ageCheck to find profiles to add to new array
         if (!((age >= ageCheck && p.age < ageCheck) || (age <= ageCheck && p.age > ageCheck) || gender != p.gender)) {
@@ -42,8 +43,7 @@ function showProfile(profiles, age, gender) {
 }
 
 
-
-// Anything below this is ideas that was scrapped/changed, but left commented out to show my ideas along the way
+// Anything below this are ideas that was scrapped/changed, but left commented out to show my ideas along the way
 
 /* rev 1
 function showProfile(profiles, age, gender) {
